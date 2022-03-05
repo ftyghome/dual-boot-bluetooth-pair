@@ -59,7 +59,7 @@ def _format_ediv(ediv):
 
 def _format_ltk(ltk):
     """ Convert LTK to uppercase and remove commas."""
-    return ltk.lstrip('hex:').upper().replace(',', '')
+    return ltk.replace("hex:", "").upper().replace(',', '')
 
 
 def _format_csrk(csrk):
