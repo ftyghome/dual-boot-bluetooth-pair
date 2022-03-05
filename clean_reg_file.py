@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import argparse
 import codecs
 
@@ -29,7 +29,6 @@ def _clean(contents):
         new_lines.append(line.strip())
 
     return '\n'.join(new_lines)
-
 
 
 def _save_str_to_file(contents, file_path):
