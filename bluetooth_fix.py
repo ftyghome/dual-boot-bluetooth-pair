@@ -57,7 +57,6 @@ def _format_ediv(ediv):
     return int(ediv, 16)
 
 
-
 def _format_ltk(ltk):
     """ Convert LTK to uppercase and remove commas."""
     return ltk.lstrip('hex:').upper().replace(',', '')
@@ -70,9 +69,12 @@ def _format_csrk(csrk):
 
 def _process_reg_file(config):
     """ Process the reg file."""
+
+    section_included = ['ltk', 'ediv', 'erand', 'csrk']
     sections = config.sections()
+
     for section in sections:
-        if len(section) < 98:
+        if len(section) < 98 or not (set(section_included) <= set(config[section])):
             continue
         print('\n')
         print('Dir Name: /var/lib/bluetooth/{}'.format(
@@ -98,10 +100,8 @@ def main():
 if __name__ == '__main__':
     main()
 
-
 # reg_str = reg_file_to_str('/home/mark/Desktop/BTKeys.reg')
 # file_path_to_dict(reg_str)
-
 
 
 # Print
